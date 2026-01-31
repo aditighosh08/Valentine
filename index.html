@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Be My Valentine 💘</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      background: #fff0f5;
+      flex-direction: column;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      color: white;
+    }
+    #yesBtn {
+      background-color: green;
+      font-size: 16px;
+    }
+    #noBtn {
+      background-color: red;
+      font-size: 16px;
+    }
+    #ourPhoto {
+      width: 300px;
+      border-radius: 12px;
+      margin-top: 20px;
+      display: none; /* hide initially */
+    }
+    img {
+      max-width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <img
+    id="gif"
+    src="https://media.tenor.com/VIChDQ6ejRQAAAAj/jumping-bear-hearts-no-png.gif"
+    alt="cute bear"
+  />
+  <h1 id="question">Will you be my Valentine? 💘</h1>
+  <div>
+    <button id="yesBtn">Yes</button>
+    <button id="noBtn">No</button>
+  </div>
+  <!-- Your personal photo -->
+  <img id="ourPhoto" src="us.jpg" alt="Us" />
+
+  <script>
+    const noPhrases = [
+      "No 💔",
+      "Pretty please? 🥺",
+      "But we'd be so cute together! 💕",
+      "One more chance, pookie?",
+      "Don't break my heart :(",
+      "What about a maybe?",
+      "Please don't do this to me, I'm fragile"
+    ];
+
+    let noClicks = 0;
+
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const gif = document.getElementById("gif");
+    const question = document.getElementById("question");
+    const ourPhoto = document.getElementById("ourPhoto");
+
+    yesBtn.onclick = () => {
+      gif.src = "https://media.tenor.com/f1xnRxTRxLAAAAAj/bears-with-kisses-bg.gif";
+      question.innerText = "Yay!!! 💖🎉";
+      yesBtn.style.display = "none";
+      noBtn.style.display = "none";
+      ourPhoto.style.display = "block"; // show photo
+    };
+
+    noBtn.onclick = () => {
+      noClicks++;
+      yesBtn.style.fontSize = Math.min(16 + noClicks * 20, 80) + "px";
+      noBtn.innerText = noPhrases[Math.min(noClicks - 1, noPhrases.length - 1)];
+    };
+  </script>
+</body>
+</html>
