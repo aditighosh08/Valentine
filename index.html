@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Be My Valentine 💘</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      background: #fff0f5;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      color: white;
+    }
+    #yesBtn {
+      background-color: green;
+      font-size: 16px;
+    }
+    #noBtn {
+      background-color: red;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <img
+      id="gif"
+      src="https://media.tenor.com/VIChDQ6ejRQAAAAj/jumping-bear-hearts-no-png.gif"
+      alt="cute bear"
+    />
+    <h1 id="question">Will you be my Valentine? 💘</h1>
+    <div>
+      <button id="yesBtn">Yes</button>
+      <button id="noBtn">No</button>
+    </div>
+  </div>
+
+  <script>
+    const noPhrases = [
+      "No 💔",
+      "Pretty please? 🥺",
+      "But we'd be so cute together! 💕",
+      "One more chance, pookie?",
+      "Don't break my heart :(",
+      "What about a maybe?",
+      "Please don't do this to me, I'm fragile"
+    ];
+
+    let noClicks = 0;
+
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const gif = document.getElementById("gif");
+    const question = document.getElementById("question");
+
+    yesBtn.onclick = () => {
+      gif.src = "https://media.tenor.com/f1xnRxTRxLAAAAAj/bears-with-kisses-bg.gif";
+      question.innerHTML = "Yay!!! 💖🎉";
+      yesBtn.style.display = "none";
+      noBtn.style.display = "none";
+    };
+
+    noBtn.onclick = () => {
+      noClicks++;
+      yesBtn.style.fontSize = Math.min(16 + noClicks * 20, 80) + "px";
+      noBtn.innerText =
+        noPhrases[Math.min(noClicks - 1, noPhrases.length - 1)];
+    };
+  </script>
+</body>
+</html>
